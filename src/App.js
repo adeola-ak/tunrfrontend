@@ -18,7 +18,8 @@ function App() {
 	};
 	// State lives here
 	const [songs, setSongs] = useState([]);
-	const [selectedSong, setSelectedSong] = useState(emptySong);
+  const [selectedSong, setSelectedSong] = useState(emptySong);
+  const [favorites, setFavorites] = useState([])
 	// Function to Fetch songs
 	// match fetch to deployed data //
 	const getSongs = () => {
@@ -61,18 +62,16 @@ function App() {
 			<h1>TUNR.</h1>
 			<h6>FOR ALL YOUR PLAYLIST NEEDS</h6>
 			<hr />
-			<Switch>
+			<Playlist
+							// {...rp}
+							songs={songs}
+							selectSong={selectedSong}
+							removeSong={removeSong}
+						/>
+      <Switch>
 				<Route
 					exact
 					path='/'
-					// renderPlaylist={(rp) => (
-					// 	<Playlist
-					// 		{...rp}
-					// 		songs={songs}
-					// 		selectSong={selectedSong}
-					// 		removeSong={removeSong}
-					// 	/>
-					// )}
 					render={(rp) => (
 						<Form
 							{...rp}
