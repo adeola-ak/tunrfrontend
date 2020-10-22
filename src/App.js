@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Form from './components/Form';
+import { Route, Link, Switch } from 'react-router-dom';
 import Playlist from './components/Playlist';
 // import Favorites from './components/Favorites';
 
@@ -64,15 +65,15 @@ function App() {
 				<Route
 					exact
 					path='/'
-					renderPlaylist={(rp) => (
-						<Playlist
-							{...rp}
-							songs={songs}
-							selectSong={selectSong}
-							removeSong={removeSong}
-						/>
-					)}
-					renderForm={(rp) => (
+					// renderPlaylist={(rp) => (
+					// 	<Playlist
+					// 		{...rp}
+					// 		songs={songs}
+					// 		selectSong={selectedSong}
+					// 		removeSong={removeSong}
+					// 	/>
+					// )}
+					render={(rp) => (
 						<Form
 							{...rp}
 							label='create'
