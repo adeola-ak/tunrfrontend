@@ -10,6 +10,7 @@ const Form = (props) => {
         event.preventDefault()
         // handleSubmit from app here 
         props.handleSubmit(formData);
+        props.history.push('/');
     }
 
   // HandleChange 
