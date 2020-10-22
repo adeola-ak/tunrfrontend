@@ -15,7 +15,7 @@ const Playlist = (props) => {
             {song.favorite === true ?  <i className="far fa-heart"></i> : <i className="fas fa-heart"></i> }
             
             <button onClick={() => {
-                props.selectDog(song)        
+                props.selectSong(song)        
                 props.history.push("/edit")
             }}>
                 Edit
