@@ -33,7 +33,7 @@ const Form = (props) => {
 
         ARTIST
         <input
-            type="number"
+            type="text"
             name="artist"
             value={formData.artist}
             onChange={handleChange}
