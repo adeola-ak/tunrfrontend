@@ -10,6 +10,7 @@ const Form = (props) => {
         event.preventDefault()
         // handleSubmit from app here 
         props.handleSubmit(formData);
+        props.history.push('/');
     }
 
   // HandleChange 
@@ -33,7 +34,7 @@ const Form = (props) => {
 
         ARTIST
         <input
-            type="number"
+            type="text"
             name="artist"
             value={formData.artist}
             onChange={handleChange}

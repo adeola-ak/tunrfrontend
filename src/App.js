@@ -24,7 +24,7 @@ function App() {
 	// Function to Fetch songs
 	// match fetch to deployed data //
 	const getSongs = () => {
-		fetch(url + "/song/seed/")
+		fetch(url + '/song/')
 			.then((response) => response.json())
 			.then((data) => {
 				setSongs(data);
@@ -51,27 +51,30 @@ function App() {
 	// handleCreate for creating songs
 	const handleCreate = (newSong) => {
 		// match create with deployed data //
-		fetch(url + "/song/seed/", {
-			method: "post",
-			headers: { "Content-Type": "application/json" },
+		fetch(url + '/song/', {
+			method: 'post',
+			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(newSong),
 		}).then((response) => getSongs());
 	};
 	//  handleUpdate to edit songs
 	const handleUpdate = (song) => {
 		// match create with deployed data //
-		fetch(url + "/song/seed/" + song._id, {
-			method: "put",
-			headers: { "Content-Type": "application/json" },
+fetch(url + '/song/' + song._id, {
+			method: 'put',
+			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(song),
 		}).then((response) => getSongs());
 	};
 	const removeSong = (song) => {
 		// match create with deployed data //
-		fetch(url + "/song/seed/" + song._id, {
-			method: "delete",
+fetch(url + '/song/' + song._id, {
+			method: 'delete',
 		}).then((response) => getSongs());
-	};
+  };
+  const selectSong = (song) => {
+    setSelectedSong(song)
+  }
 	return (
 		<div className="App">
 			<h1>TUNR.</h1>
@@ -85,7 +88,7 @@ function App() {
 				handleFavoritesClick={handleFavoritesClick}
 			/>
 			<Favorites favorites={favorites} />
-			<Switch>
+      <Switch>
 				<Route
 					exact
 					path="/"
