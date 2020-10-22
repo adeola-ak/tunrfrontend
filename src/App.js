@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import './App.css';
 import Form from './components/Form';
+import { Route, Link, Switch } from 'react-router-dom';
 import Playlist from './components/Playlist';
-import Favorites from './components/Favorites';
+// import Favorites from './components/Favorites';
 
 function App() {
 	// url of database
 	// change url to deployed site //
-	const url = 'localhost:3000';
+	const url = 'https://aa-tunr-backend.herokuapp.com';
 	// empty song for create
 	const emptySong = {
 		title: '',
@@ -21,7 +22,7 @@ function App() {
 	// Function to Fetch songs
 	// match fetch to deployed data //
 	const getSongs = () => {
-		fetch(url + '/')
+		fetch(url + '/song/seed/')
 			.then((response) => response.json())
 			.then((data) => {
 				setSongs(data);
@@ -34,7 +35,7 @@ function App() {
 	// handleCreate for creating songs
 	const handleCreate = (newSong) => {
 		// match create with deployed data //
-		fetch(url + '/', {
+		fetch(url + '/song/seed/', {
 			method: 'post',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(newSong),
@@ -43,7 +44,7 @@ function App() {
 	//  handleUpdate to edit songs
 	const handleUpdate = (song) => {
 		// match create with deployed data //
-		fetch(url + '/' + song._id, {
+		fetch(url + '/song/seed/' + song._id, {
 			method: 'put',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(song),
@@ -51,7 +52,7 @@ function App() {
 	};
 	const removeSong = (song) => {
 		// match create with deployed data //
-		fetch(url + '/' + song._id, {
+		fetch(url + '/song/seed/' + song._id, {
 			method: 'delete',
 		}).then((response) => getSongs());
 	};
@@ -64,15 +65,15 @@ function App() {
 				<Route
 					exact
 					path='/'
-					renderPlaylist={(rp) => (
-						<Playlist
-							{...rp}
-							songs={songs}
-							selectSong={selectSong}
-							removeSong={removeSong}
-						/>
-					)}
-					renderForm={(rp) => (
+					// renderPlaylist={(rp) => (
+					// 	<Playlist
+					// 		{...rp}
+					// 		songs={songs}
+					// 		selectSong={selectedSong}
+					// 		removeSong={removeSong}
+					// 	/>
+					// )}
+					render={(rp) => (
 						<Form
 							{...rp}
 							label='create'
